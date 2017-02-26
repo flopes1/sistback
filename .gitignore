@@ -1,0 +1,14 @@
+# files
+.project
+.classpath
+.settings
+.checkstyle
+*.iml
+*.orig
+
+# folders
+.idea/
+target/
+bin/
+logs/
+
