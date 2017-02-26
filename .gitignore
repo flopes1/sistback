@@ -1,0 +1,16 @@
+# files
+.project
+.classpath
+.settings
+.checkstyle
+*.iml
+*.orig
+
+# folders
+.idea/
+target/
+bin/
+logs/
+dsdi-api/batch-map.ser
+dsdi-adm-js/
+dsdi-ecm-alfresco/alf_data_dev/
