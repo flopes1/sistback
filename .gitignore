@@ -8,6 +8,8 @@
 
 # folders
 .idea/
+.metadata/
+.recommenders/
 target/
 bin/
 logs/
