@@ -3,12 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.ssj</groupId>
-		<artifactId>ssj-backend</artifactId>
+		<groupId>com.ssl</groupId>
+		<artifactId>ssl-backend</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../ssj-backend</relativePath>
+		<relativePath>../ssl-backend</relativePath>
 	</parent>
 
-	<artifactId>ssj-service</artifactId>
+	<artifactId>ssl-model</artifactId>
 	<packaging>jar</packaging>
+
 </project>
