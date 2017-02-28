@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/02/2017 11:05:59 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="com.ssl.entities.PhoneNumberUserr" table="phone_number_userr" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="userr" class="com.ssl.entities.Userr" fetch="select">
+            <column name="userr_id" />
+        </many-to-one>
+        <property name="countryCode" type="short">
+            <column name="country_code" not-null="true" />
+        </property>
+        <property name="stateCode" type="short">
+            <column name="state_code" not-null="true" />
+        </property>
+        <property name="number" type="int">
+            <column name="number_" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

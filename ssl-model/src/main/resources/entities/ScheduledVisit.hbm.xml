@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/02/2017 11:05:59 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="com.ssl.entities.ScheduledVisit" table="scheduled_visit" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="condominium" class="com.ssl.entities.Condominium" fetch="select">
+            <column name="condominium_id" />
+        </many-to-one>
+        <many-to-one name="enumStatusKind" class="com.ssl.entities.EnumStatusKind" fetch="select">
+            <column name="status" />
+        </many-to-one>
+        <many-to-one name="userr" class="com.ssl.entities.Userr" fetch="select">
+            <column name="userr_requester_id" />
+        </many-to-one>
+        <many-to-one name="visitor" class="com.ssl.entities.Visitor" fetch="select">
+            <column name="visitor_id" />
+        </many-to-one>
+        <property name="visitDate" type="timestamp">
+            <column name="visit_date" length="29" not-null="true" />
+        </property>
+        <property name="kind" type="string">
+            <column name="kind" />
+        </property>
+        <property name="hasVehicle" type="java.lang.Boolean">
+            <column name="has_vehicle" />
+        </property>
+        <set name="serviceProvisions" table="service_provision" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scheduled_visit_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.ServiceProvision" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="ssl" match-name="autentication_history"/>
+  <table-filter match-schema="ssl" match-name="condominium"/>
+  <table-filter match-schema="ssl" match-name="condominium_address"/>
+  <table-filter match-schema="ssl" match-name="employee"/>
+  <table-filter match-schema="ssl" match-name="enum_status_kind"/>
+  <table-filter match-schema="ssl" match-name="phone_number_condominium"/>
+  <table-filter match-schema="ssl" match-name="phone_number_employee"/>
+  <table-filter match-schema="ssl" match-name="phone_number_userr"/>
+  <table-filter match-schema="ssl" match-name="phone_number_visitor"/>
+  <table-filter match-schema="ssl" match-name="scheduled_visit"/>
+  <table-filter match-schema="ssl" match-name="service_provision"/>
+  <table-filter match-schema="ssl" match-name="userr"/>
+  <table-filter match-schema="ssl" match-name="vehicle"/>
+  <table-filter match-schema="ssl" match-name="visitor"/>
+</hibernate-reverse-engineering>

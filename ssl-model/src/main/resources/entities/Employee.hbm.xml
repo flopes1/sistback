@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/02/2017 11:05:59 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="com.ssl.entities.Employee" table="employee" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="condominium" class="com.ssl.entities.Condominium" fetch="select">
+            <column name="condominium_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="cpf" type="int">
+            <column name="cpf" not-null="true" unique="true" />
+        </property>
+        <property name="adm" type="java.lang.Boolean">
+            <column name="adm" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        <set name="autenticationHistories" table="autentication_history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.AutenticationHistory" />
+        </set>
+        <set name="phoneNumberEmployees" table="phone_number_employee" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.PhoneNumberEmployee" />
+        </set>
+    </class>
+</hibernate-mapping>

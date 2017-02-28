@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/02/2017 11:05:59 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="com.ssl.entities.Condominium" table="condominium" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="active" type="java.lang.Boolean">
+            <column name="active" />
+        </property>
+        <set name="employees" table="employee" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.Employee" />
+        </set>
+        <set name="visitors" table="visitor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.Visitor" />
+        </set>
+        <set name="userrs" table="userr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.Userr" />
+        </set>
+        <set name="condominiumAddresses" table="condominium_address" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.CondominiumAddress" />
+        </set>
+        <set name="scheduledVisits" table="scheduled_visit" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.ScheduledVisit" />
+        </set>
+        <set name="autenticationHistories" table="autentication_history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.AutenticationHistory" />
+        </set>
+        <set name="phoneNumberCondominiums" table="phone_number_condominium" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="condominium_id" />
+            </key>
+            <one-to-many class="com.ssl.entities.PhoneNumberCondominium" />
+        </set>
+    </class>
+</hibernate-mapping>
