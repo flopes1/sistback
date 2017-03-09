@@ -20,7 +20,7 @@ import com.sist.ssl.loader.SslSetupConstants;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages =
-    { "com.ssl.database.impl", "com.ssl.entities" })
+    { "com.ssl.database", "com.ssl.entities"})
 public class HibernateConfig
 {
 

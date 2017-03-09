@@ -2,12 +2,16 @@ package com.ssl.entities;
 // default package
 // Generated 28/02/2017 22:40:44 by Hibernate Tools 5.2.1.Final
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,9 +24,14 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "userr", schema = "dbo", uniqueConstraints = @UniqueConstraint(columnNames = "cpf"))
-public class Userr implements java.io.Serializable
+public class Userr implements Serializable
 {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 4405068494476518897L;
+    
     private int id;
     private Condominium condominium;
     private int cpf;
@@ -61,7 +70,7 @@ public class Userr implements java.io.Serializable
     }
 
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     public int getId()
     {
@@ -129,7 +138,7 @@ public class Userr implements java.io.Serializable
         this.autenticationHistories = autenticationHistories;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userr")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userr", cascade=CascadeType.ALL)
     public Set<Vehicle> getVehicles()
     {
         return this.vehicles;

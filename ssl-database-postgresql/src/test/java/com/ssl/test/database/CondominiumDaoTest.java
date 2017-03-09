@@ -23,66 +23,135 @@ import com.ssl.entities.CondominiumAddress;
 @Transactional(propagation = Propagation.REQUIRED)
 public class CondominiumDaoTest
 {
-
+    // TODO Id based tests will fail caused postgree sequence generator error
     @Autowired
     private ICondominiumDao condDAO;
 
-    // @Rollback(false)
     @Test
-    public void testAddCondominiumAndGetById()
+    public void addCondominiumAndGetById()
     {
-        Condominium c = new Condominium();
-        c.setName("Nome7777777");
+        Condominium condominium = new Condominium();
+        condominium.setName("Nome");
 
-        CondominiumAddress a = this.getMockAddress();
+        CondominiumAddress address = this.getMockAddress();
+        condominium.setCondominiumAddress(address);
+        address.setCondominium(condominium);
 
-        c.setCondominiumAddress(a);
-        a.setCondominium(c);
+        condDAO.addCondominium(condominium);
 
-        condDAO.addCondominium(c);
-
-        Condominium cond = condDAO.getCondominiumById(30);
+        Condominium cond = condDAO.getCondominiumById(103);
 
         assertEquals(cond != null, true);
-        assertEquals(cond.getName(), "Nome");
     }
 
     @Test
-    public void testRemoveCondominiumAndGetByName()
+    public void getCondominiumByName()
     {
-        Condominium c = new Condominium();
-        c.setName("Nome do condominio");
+        Condominium condominium = new Condominium();
+        condominium.setName("Nome do condominio");
 
-        CondominiumAddress a = this.getMockAddress();
-        c.setCondominiumAddress(a);
-        a.setCondominium(c);
+        CondominiumAddress address = this.getMockAddress();
+        condominium.setCondominiumAddress(address);
+        address.setCondominium(condominium);
 
-        condDAO.addCondominium(c);
-        condDAO.removeCondominium(c);
+        condDAO.addCondominium(condominium);
+        // condDAO.removeEntity(condominium);
 
         Condominium cond = condDAO.getCondominiumByName("Nome do condominio");
 
         assertEquals(cond != null, true);
         assertEquals(cond.getName(), "Nome do condominio");
-        assertEquals(cond.getActive(), false);
     }
 
     @Test
-    public void testUpdateCondominium()
+    public void removeCondominium()
     {
-        Condominium c = new Condominium();
-        c.setName("Nome do condominio");
+        Condominium condominium = new Condominium();
+        condominium.setName("Nome do condominio Remove");
 
-        condDAO.addCondominium(c);
+        CondominiumAddress address = this.getMockAddress();
+        condominium.setCondominiumAddress(address);
+        address.setCondominium(condominium);
 
-        c.setName("Nome do condominio editado");
-
-        condDAO.updateCondominium(c);
-
-        Condominium cond = condDAO.getCondominiumByName("Nome do condominio editado");
+        condDAO.addCondominium(condominium);
+        Condominium cond = condDAO.getCondominiumByName("Nome do condominio Remove");
 
         assertEquals(cond != null, true);
-        assertEquals(cond.getName(), "Nome do condominio editado");
+        assertEquals(cond.getName(), "Nome do condominio Remove");
+
+        condDAO.removeCondominium(condominium);
+        Condominium cond2 = condDAO.getCondominiumByName("Nome do condominio Remove");
+
+        assertEquals(cond2 == null, true);
+    }
+
+    @Test
+    public void removeCondominiumById()
+    {
+        Condominium condominium = new Condominium();
+        condominium.setName("Nome do condominio Remove id");
+
+        CondominiumAddress address = this.getMockAddress();
+        condominium.setCondominiumAddress(address);
+        address.setCondominium(condominium);
+
+        condDAO.addCondominium(condominium);
+        Condominium cond = condDAO.getCondominiumById(113);
+
+        assertEquals(cond != null, true);
+        assertEquals(cond.getName(), "Nome do condominio Remove id");
+
+        condDAO.removeCondominiumById(113);
+        Condominium cond2 = condDAO.getCondominiumByName("Nome do condominio Remove id");
+
+        assertEquals(cond2 == null, true);
+    }
+
+    @Test
+    public void removeCondominiumByName()
+    {
+        Condominium condominium = new Condominium();
+        condominium.setName("Nome do condominio Remove Name");
+
+        CondominiumAddress address = this.getMockAddress();
+        condominium.setCondominiumAddress(address);
+        address.setCondominium(condominium);
+
+        condDAO.addCondominium(condominium);
+        Condominium cond = condDAO.getCondominiumByName("Nome do condominio Remove Name");
+
+        assertEquals(cond != null, true);
+        assertEquals(cond.getName(), "Nome do condominio Remove Name");
+
+        condDAO.removeCondominiumByName("Nome do condominio Remove Name");
+        Condominium cond2 = condDAO.getCondominiumByName("Nome do condominio Remove Name");
+
+        assertEquals(cond2 == null, true);
+    }
+
+    @Test
+    public void updateCondominium()
+    {
+        Condominium condominium = new Condominium();
+        condominium.setName("Nome do condominio update");
+
+        CondominiumAddress address = this.getMockAddress();
+        condominium.setCondominiumAddress(address);
+        address.setCondominium(condominium);
+
+        condDAO.addCondominium(condominium);
+        Condominium cond = condDAO.getCondominiumByName("Nome do condominio update");
+
+        assertEquals(cond != null, true);
+        assertEquals(cond.getName(), "Nome do condominio update");
+
+        cond.setName("Nome do condominio update pos update");
+
+        Condominium updatedCond = condDAO.updateCondominium(cond);
+
+        assertEquals(updatedCond != null, true);
+        assertEquals(updatedCond.getName(), "Nome do condominio update pos update");
+
     }
 
     @Test
@@ -90,9 +159,13 @@ public class CondominiumDaoTest
     {
         for (int i = 0; i < 5; i++)
         {
-            Condominium a = new Condominium();
-            a.setName("Nome: " + i);
-            condDAO.addCondominium(a);
+            Condominium condominium = new Condominium();
+            condominium.setName("Nome " + i);
+
+            CondominiumAddress address = this.getMockAddress();
+            condominium.setCondominiumAddress(address);
+            address.setCondominium(condominium);
+            condDAO.addCondominium(condominium);
         }
 
         List<Condominium> allCond = this.condDAO.getAllCondominiums();
@@ -102,16 +175,16 @@ public class CondominiumDaoTest
 
     }
 
-    private CondominiumAddress getMockAddress()
+    public CondominiumAddress getMockAddress()
     {
         CondominiumAddress address = new CondominiumAddress();
-        address.setCity("Jaboatao7777");
-        address.setCountry("Brasil7777");
-        address.setDistrict("Piedade777");
-        address.setNumber(1554);
-        address.setState("PE777");
+        address.setCity("Jaboatao");
+        address.setCountry("Brasil");
+        address.setDistrict("Piedade");
+        address.setNumber(777);
+        address.setState("PE");
         address.setZipCode(7777777);
-        address.setStreet("Rua 277777");
+        address.setStreet("Rua 7");
         return address;
     }
 }

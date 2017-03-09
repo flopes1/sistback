@@ -2,7 +2,7 @@ package com.ssl.database;
 
 import com.ssl.entities.CondominiumAddress;
 
-public interface ICondominiumAdressDao
+public interface ICondominiumAddressDao
 {
 
     void addCondominiumAddress(CondominiumAddress address);
