@@ -1,4 +1,4 @@
-package com.ssl;
+package com.ssl.service;
 
 import java.util.List;
 
