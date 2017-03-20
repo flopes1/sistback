@@ -6,17 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ssl.IAccessRequestService;
-import com.ssl.IAutenticationHistoryService;
 import com.ssl.database.IAccessRequestDao;
 import com.ssl.entities.AccessRequest;
 import com.ssl.entities.AutenticationHistory;
 import com.ssl.entities.request.EvaluateAccessRequestResponse;
+import com.ssl.service.IAccessRequestService;
+import com.ssl.service.IAutenticationHistoryService;
 
-@Service
 @Component
 @Transactional
 public class AccessRequestService implements IAccessRequestService

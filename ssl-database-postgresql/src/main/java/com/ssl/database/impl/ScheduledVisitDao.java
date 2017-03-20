@@ -7,12 +7,16 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.ssl.database.IDataAccessObject;
 import com.ssl.database.IScheduledVisitDao;
 import com.ssl.database.util.DataBaseColumnQuerysConstants;
 import com.ssl.entities.ScheduledVisit;
 
+@Component
+@Repository
 public class ScheduledVisitDao implements IScheduledVisitDao
 {
 

@@ -6,16 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ssl.IUserService;
 import com.ssl.database.IPhoneNumberUserDao;
 import com.ssl.database.IUserDao;
 import com.ssl.database.IVehicleDao;
 import com.ssl.entities.Userr;
+import com.ssl.service.IUserService;
 
-@Service
 @Component
 @Transactional
 public class UserService implements IUserService

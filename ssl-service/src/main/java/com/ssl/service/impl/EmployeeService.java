@@ -6,15 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ssl.IEmployeeService;
 import com.ssl.database.IEmployeeDao;
 import com.ssl.database.IPhoneNumberEmployeeDao;
 import com.ssl.entities.Employee;
+import com.ssl.service.IEmployeeService;
 
-@Service
 @Component
 @Transactional
 public class EmployeeService implements IEmployeeService

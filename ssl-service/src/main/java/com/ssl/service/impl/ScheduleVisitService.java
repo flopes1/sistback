@@ -6,17 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ssl.IScheduledVisitService;
 import com.ssl.database.IPhoneNumberVisitorDao;
 import com.ssl.database.IScheduledVisitDao;
 import com.ssl.database.IServiceProvisionDao;
 import com.ssl.database.IVisitorDao;
 import com.ssl.entities.ScheduledVisit;
+import com.ssl.service.IScheduledVisitService;
 
-@Service
 @Component
 @Transactional
 public class ScheduleVisitService implements IScheduledVisitService
