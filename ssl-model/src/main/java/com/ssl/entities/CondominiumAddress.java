@@ -5,7 +5,6 @@ package com.ssl.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,6 +37,7 @@ public class CondominiumAddress implements Serializable
     private Condominium condominium;
     private String street;
     private int number;
+    private String complement;
     private String district;
     private String state;
     private String city;
@@ -48,12 +48,13 @@ public class CondominiumAddress implements Serializable
     {
     }
 
-    public CondominiumAddress(int id, String street, int number, String district, String state, String city,
-            int zipCode, String country)
+    public CondominiumAddress(int id, String street, int number, String complement, String district, String state,
+            String city, int zipCode, String country)
     {
         this.id = id;
         this.street = street;
         this.number = number;
+        this.complement = complement;
         this.district = district;
         this.state = state;
         this.city = city;
@@ -61,13 +62,14 @@ public class CondominiumAddress implements Serializable
         this.country = country;
     }
 
-    public CondominiumAddress(int id, Condominium condominium, String street, int number, String district, String state,
-            String city, int zipCode, String country)
+    public CondominiumAddress(int id, Condominium condominium, String street, int number, String complement,
+            String district, String state, String city, int zipCode, String country)
     {
         this.id = id;
         this.condominium = condominium;
         this.street = street;
         this.number = number;
+        this.complement = complement;
         this.district = district;
         this.state = state;
         this.city = city;
@@ -76,7 +78,6 @@ public class CondominiumAddress implements Serializable
     }
 
     @Id
-
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId()
@@ -89,7 +90,7 @@ public class CondominiumAddress implements Serializable
         this.id = id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "condominium_id")
     public Condominium getCondominium()
     {
@@ -121,6 +122,17 @@ public class CondominiumAddress implements Serializable
     public void setNumber(int number)
     {
         this.number = number;
+    }
+
+    @Column(name = "complement", nullable = true)
+    public String getComplement()
+    {
+        return this.complement;
+    }
+
+    public void setComplement(String complement)
+    {
+        this.complement = complement;
     }
 
     @Column(name = "district", nullable = false)

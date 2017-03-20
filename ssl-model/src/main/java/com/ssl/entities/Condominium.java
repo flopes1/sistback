@@ -174,7 +174,7 @@ public class Condominium implements Serializable
         this.autenticationHistories = autenticationHistories;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "condominium")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "condominium", cascade=CascadeType.ALL)
     public Set<PhoneNumberCondominium> getPhoneNumberCondominiums()
     {
         return this.phoneNumberCondominiums;

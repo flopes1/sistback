@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +20,7 @@ import com.ssl.entities.Condominium;
 public class CondominiumDao implements ICondominiumDao
 {
 
-    private static final Log log = LogFactory.getLog(CondominiumDao.class);
+    private static final Logger log = LoggerFactory.getLogger(CondominiumDao.class);
 
     @Autowired
     private IDataAccessObject<Condominium> condDataAcessObject;
@@ -32,7 +30,7 @@ public class CondominiumDao implements ICondominiumDao
     {
         log.debug("Initializing generic repository access");
         this.condDataAcessObject.setClassType(Condominium.class);
-        log.debug("Generic repository initialized");
+        log.debug("Generic repository initialized with entity :" + Condominium.class.getName());
     }
 
     @Override

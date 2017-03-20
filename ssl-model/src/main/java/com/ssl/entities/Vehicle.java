@@ -73,7 +73,7 @@ public class Vehicle implements Serializable
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userr_id")
     public Userr getUserr()
     {

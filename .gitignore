@@ -9,6 +9,7 @@
 # folders
 .idea/
 .metadata/
+.config/
 .recommenders/
 target/
 bin/

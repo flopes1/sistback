@@ -11,4 +11,13 @@
 
 	<artifactId>ssl-service</artifactId>
 	<packaging>jar</packaging>
+	
+	<dependencies>
+	<dependency>
+			<groupId>com.ssl</groupId>
+			<artifactId>ssl-database-postgresql</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
 </project>
